@@ -21,7 +21,7 @@ class RatingController extends Controller
         ->select('product_id', DB::raw('avg(star) as avg_stars'))
         ->groupBy('product_id')
         ->get();
-        return view('admin.ratings.listr', compact('ratings'));
+        return view('admin.ratings.list', compact('ratings'));
     }
 
     /**

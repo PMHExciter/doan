@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 01, 2023 lúc 03:18 PM
+-- Thời gian đã tạo: Th9 08, 2023 lúc 11:19 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -44,8 +44,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '2023-05-20 15:30:26', '$2y$10$YVJBKUvysXjPCtHed8CjYuCwA2oLT4Ww3v2hQa6JmaEUwo/diJ1yq', 0, 'RCIBn8XRQYTJK0AMcgIrPZoMPVPnN5QbTCvVCdzBMz2dg4Ce900kLM2hGnLe', '2023-05-20 15:30:26', '2023-05-20 15:30:26'),
-(2, 'Nguyễn Văn A', 'nv@gmail.com', NULL, '$2y$10$EOoI07D7GHAKx3Rz9gRac.0jUFBDdl0m6Moo7hI5u/Ih1DNE.nGoS', 1, 'E5NXeXnNNiQJdU4QYxhK9oTUb4bKGLkOVicLnNgukBtIjobDjVN4BOvl06TE', '2023-06-30 01:31:53', '2023-07-08 16:49:15');
+(1, 'admin', 'admin@gmail.com', '2023-05-20 15:30:26', '$2y$10$YVJBKUvysXjPCtHed8CjYuCwA2oLT4Ww3v2hQa6JmaEUwo/diJ1yq', 0, 'dnQjaDnSx1lCfNo2FzTSgHe54dLEdqFcBpJAEYmfxa7qthMj2dWI6JpCoA36', '2023-05-20 15:30:26', '2023-05-20 15:30:26'),
+(2, 'Nguyễn Văn A', 'nv@gmail.com', NULL, '$2y$10$EOoI07D7GHAKx3Rz9gRac.0jUFBDdl0m6Moo7hI5u/Ih1DNE.nGoS', 1, 'IJjiJzv7Z2uvGb1I6MXxpCzKAAqP6BajztpIRcl94jqbOm9efGSxQNb1DSSA', '2023-06-30 01:31:53', '2023-07-08 16:49:15');
 
 -- --------------------------------------------------------
 
@@ -137,6 +137,14 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `product_id`, `content`, `created_at`, `updated_at`) VALUES
+(3, 3, 17, 'hay quá', '2023-09-01 13:21:19', '2023-09-01 13:21:19'),
+(4, 4, 11, 'Cuốn sách quá ý nghĩa', '2023-09-08 08:49:41', '2023-09-08 08:49:41');
 
 -- --------------------------------------------------------
 
@@ -250,12 +258,17 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `voucher_code`, `total`, `address`, `status`, `created_at`, `updated_at`) VALUES
 ('order_7KsLCLaACurC2qhbgonHthVK', 3, NULL, 150000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 11:14:27', '2023-08-30 11:14:27'),
+('order_AGYcW3vZjZ1viY9wKtROA94v', 4, NULL, 52000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 2, '2023-09-07 05:46:38', '2023-09-07 06:02:20'),
+('order_C2flQsTI1j4dobZvW4ru7Y5E', 4, NULL, 52000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-09-07 05:48:11', '2023-09-07 05:48:11'),
 ('order_CFwwiGllFs3bKjhcCVB9ZCdz', 3, NULL, 150000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 19:43:02', '2023-08-30 19:43:02'),
 ('order_FRWpSKHZzNJENf5sL6UygCoB', 3, NULL, 190000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 2, '2023-09-01 09:03:54', '2023-09-01 10:35:29'),
 ('order_gnUQaiIMKUljMl8X0U9HAumy', 3, NULL, 100000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 08:28:34', '2023-08-30 08:28:34'),
 ('order_h2mDf4715fxLzNKraKcMshun', 3, 'km1', 50000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 08:09:58', '2023-08-30 08:09:58'),
 ('order_HcOcIiMds0T8v3co7eVRzzzR', 1, 'km1', -48000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 08:03:59', '2023-08-30 08:03:59'),
+('order_hdh9k1wWQ6EXeilpSPazCAyq', 4, NULL, 52000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-09-07 05:46:13', '2023-09-07 05:46:13'),
 ('order_QI7c8aYbPxSrQmgNL2RK9mb4', 1, NULL, 50000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-08-30 07:37:12', '2023-08-30 07:37:12'),
+('order_QLjkyDuzyw7qhMxgrHLrEbEw', 3, NULL, 1710000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-09-07 05:41:31', '2023-09-07 05:41:31'),
+('order_SRI61aW5n3FhQReSAP6fhjmD', 4, NULL, 52000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-09-07 05:45:59', '2023-09-07 05:45:59'),
 ('order_sUCXx0Egh8mpqTEhRvBKF3hY', 1, 'km1', -48000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 1, '2023-08-30 08:04:40', '2023-08-30 08:11:50'),
 ('order_tFFQ8pJV6CqyWKlIwedKdLEt', 3, NULL, 190000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 0, '2023-09-01 08:51:26', '2023-09-01 08:51:26'),
 ('order_TgmnQD3TssWWKinpdMPo856e', 2, NULL, 280000, 'số 100 đường cầu diễn,phường minh khai, quận bắc từ liêm, hà nội', 2, '2023-08-29 17:35:00', '2023-08-29 17:36:29'),
@@ -298,7 +311,12 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `qty`, `created_at`
 (27, 'order_CFwwiGllFs3bKjhcCVB9ZCdz', 16, 1, '2023-08-30 19:43:02', '2023-08-30 19:43:02'),
 (28, 'order_vKfm0dOSxk2a6nkQKQrqQ1mn', 16, 1, '2023-08-30 19:45:25', '2023-08-30 19:45:25'),
 (29, 'order_tFFQ8pJV6CqyWKlIwedKdLEt', 17, 1, '2023-09-01 08:51:26', '2023-09-01 08:51:26'),
-(30, 'order_FRWpSKHZzNJENf5sL6UygCoB', 17, 1, '2023-09-01 09:03:54', '2023-09-01 09:03:54');
+(30, 'order_FRWpSKHZzNJENf5sL6UygCoB', 17, 1, '2023-09-01 09:03:54', '2023-09-01 09:03:54'),
+(31, 'order_QLjkyDuzyw7qhMxgrHLrEbEw', 17, 3, '2023-09-07 05:41:31', '2023-09-07 05:41:31'),
+(32, 'order_SRI61aW5n3FhQReSAP6fhjmD', 12, 1, '2023-09-07 05:45:59', '2023-09-07 05:45:59'),
+(33, 'order_hdh9k1wWQ6EXeilpSPazCAyq', 12, 1, '2023-09-07 05:46:13', '2023-09-07 05:46:13'),
+(34, 'order_AGYcW3vZjZ1viY9wKtROA94v', 12, 1, '2023-09-07 05:46:38', '2023-09-07 05:46:38'),
+(35, 'order_C2flQsTI1j4dobZvW4ru7Y5E', 12, 1, '2023-09-07 05:48:11', '2023-09-07 05:48:11');
 
 -- --------------------------------------------------------
 
@@ -392,11 +410,11 @@ INSERT INTO `products` (`id`, `name`, `price`, `category_id`, `brand_id`, `suppl
 (9, 'Gió Đầu Mùa', 50000, 1, 2, 2, 6, NULL, 29, 1, '2023-08-30', NULL, NULL, 179, 1, '2023-08-30 06:58:58', '2023-08-30 07:37:12', NULL, NULL, NULL, 0),
 (10, 'Nắng Trong Vườn', 52000, 1, 2, 2, 6, NULL, 20, 0, '2023-08-30', NULL, NULL, 170, 1, '2023-08-30 07:03:29', '2023-08-30 07:03:29', '2023-08-30', '2023-10-08', 46000, 1),
 (11, 'Ký Túc Xá Phòng 307', 55000, 1, 1, 1, 7, NULL, 50, 0, '2023-08-30', NULL, NULL, 176, 1, '2023-08-30 07:09:26', '2023-08-30 07:09:26', NULL, NULL, NULL, 0),
-(12, 'Tắt Đèn', 52000, 1, 3, 3, 8, NULL, 37, 3, '2023-08-30', NULL, NULL, 231, 1, '2023-08-30 07:11:45', '2023-08-30 08:05:37', NULL, NULL, NULL, 0),
-(13, 'Về Nhà', 100000, 1, 1, 1, 9, NULL, 33, 2, '2023-08-30', NULL, NULL, 399, 1, '2023-08-30 07:15:28', '2023-08-30 08:28:34', NULL, NULL, NULL, 0),
+(12, 'Tắt Đèn', 52000, 1, 3, 3, 8, NULL, 33, 7, '2023-08-30', NULL, NULL, 231, 1, '2023-08-30 07:11:45', '2023-09-07 05:48:11', NULL, NULL, NULL, 0),
+(13, 'Về Nhà', 100000, 1, 1, 1, 9, NULL, 33, 2, '2019-10-10', NULL, NULL, 399, 1, '2023-08-30 07:15:28', '2023-09-08 07:29:58', NULL, NULL, 0, 0),
 (14, 'Conan - Cơn Ác Mộng Đen Tối', 55000, 6, 1, 1, 4, 'Trong chuyến tham quan thủy cung Toto cùng tiến sĩ Agasa, đội thám tử nhí tình cờ bắt gặp người phụ nữ mất trí nhớ, mình đầy thương tích, và đặc biệt hơn cả: hai đồng tử của cô ta khác màu nhau. Đội thám tử nhí nhiệt tình giúp đỡ, cùng cô ta lên vòng đu quay khổng lồ. Qua vẻ ngoài và khí chất kì dị, Haibara nghi ngờ cô ta là thành viên của tổ chức áo đen. Sự thật là, đêm hôm trước, người phụ nữ này đã đột nhập vào Cơ quan Cảnh sát Quốc gia rồi gặp tai nạn trên đường đào thoát. Tổ chức áo đen đang ráo riết truy lùng hòng cướp người về!', 30, 0, NULL, NULL, NULL, 97, 1, '2023-08-30 07:20:09', '2023-08-30 07:20:09', '2023-08-30', '2023-10-29', 50000, 1),
 (16, 'Chiến Lược Kinh Doanh', 150000, 2, 3, 3, 11, 'Cuốn cẩm nang về xây dựng chiến lược kinh doanh này sẽ giúp các doanh nghiệp tránh được những hệ quả khốc liệt của việc đưa ra những quyết định kém hiệu quả. Với những minh họa rõ ràng, các nghiên cứu tình huống cụ thể, 18 chương của cuốn sách giúp người đọc có một tầm nhìn tổng quát về chiến lược: cách thức phát triển và thực thi chiến lược, phân bổ nguồn lực và dẫn dắt nhân sự cho chiến lược thế nào, đổi mới sáng tạo có vai trò ra sao trong chiến lược, làm thế nào để bán hàng và marketing một cách chiến lược.\r\n\r\n \r\n\r\nMột chiến lược kinh doanh tốt được thực thi hoàn hảo chính là nhân tố quyết định tương lai thành công của doanh nghiệp. Cuốn sách này cũng chỉ ra cho bạn đọc thấy, trong lịch sử có vô vàn những quyết định chiến lược, cả lớn lẫn nhỏ, do tổ chức thiếu hiệu quả mà đã dẫn đến hệ quả nặng nề.\r\n\r\n \r\n\r\nHay nói như chính tác giả thì “Một chiến lược được cân nhắc rõ ràng và đầy cảm hứng sẽ mang lại động lực thúc đẩy thành công thương mại, trong khi một chiến lược yếu kém hoặc bị hiểu sai có thể dẫn công ty tới chỗ phá sản.”', 54, 6, '2023-08-30', NULL, NULL, 356, 1, '2023-08-30 07:30:53', '2023-08-30 19:45:25', NULL, NULL, NULL, 0),
-(17, 'SMARKETING - Giải Pháp Cạnh Tranh Trong Thế Giới Số', 190000, 2, 2, 2, 12, 'Từ trước tới nay, bán hàng và marketing luôn là hai đế chế riêng biệt, với bộ máy lãnh đạo riêng, ngân sách riêng và cấu trúc tổ chức riêng.\r\nGiờ đây, trước những thay đổi không ngừng của thế giới kinh doanh, với sự bùng nổ của internet và hiểu biết của khách hàng ngày một cao, tương lai của các doanh nghiệp phụ thuộc vào việc phát triển hai đế chế này theo kịp với sự thay đổi của thế giới.\r\nVì vậy, hai bộ phận này đã được hợp nhất thành đơn vị duy nhất, gọi là Smarketing. Mục tiêu chính của Smarketing là nâng cao chất lượng trải nghiệm khách hàng thông qua sắp xếp hợp lý chu trình tương tác với khách hàng; đưa ra những số liệu thống nhất giữa hai bộ phận; cung cấp cho ban lãnh đạo cái nhìn toàn cảnh về các chỉ số đo lường kết quả\r\nbán hàng...\r\nCuốn sách này sẽ cung cấp phương pháp, quy trình và các công cụ cần thiết để các công ty chuyển đổi sang mô hình vận hành dựa trên Smarketing, mà sự phát triển của nó sẽ quyết định tương lai của doanh nghiệp.', 18, 2, '2023-08-30', NULL, NULL, 393, 1, '2023-08-30 07:35:03', '2023-09-01 09:03:54', NULL, NULL, NULL, 0);
+(17, 'SMARKETING - Giải Pháp Cạnh Tranh Trong Thế Giới Số', 190000, 2, 2, 2, 12, 'Từ trước tới nay, bán hàng và marketing luôn là hai đế chế riêng biệt, với bộ máy lãnh đạo riêng, ngân sách riêng và cấu trúc tổ chức riêng.\r\nGiờ đây, trước những thay đổi không ngừng của thế giới kinh doanh, với sự bùng nổ của internet và hiểu biết của khách hàng ngày một cao, tương lai của các doanh nghiệp phụ thuộc vào việc phát triển hai đế chế này theo kịp với sự thay đổi của thế giới.\r\nVì vậy, hai bộ phận này đã được hợp nhất thành đơn vị duy nhất, gọi là Smarketing. Mục tiêu chính của Smarketing là nâng cao chất lượng trải nghiệm khách hàng thông qua sắp xếp hợp lý chu trình tương tác với khách hàng; đưa ra những số liệu thống nhất giữa hai bộ phận; cung cấp cho ban lãnh đạo cái nhìn toàn cảnh về các chỉ số đo lường kết quả\r\nbán hàng...\r\nCuốn sách này sẽ cung cấp phương pháp, quy trình và các công cụ cần thiết để các công ty chuyển đổi sang mô hình vận hành dựa trên Smarketing, mà sự phát triển của nó sẽ quyết định tương lai của doanh nghiệp.', 15, 5, '2023-08-30', NULL, NULL, 393, 1, '2023-08-30 07:35:03', '2023-09-07 05:41:31', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -436,6 +454,13 @@ CREATE TABLE `replies` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `replies`
+--
+
+INSERT INTO `replies` (`id`, `comment_id`, `name`, `content`, `created_at`, `updated_at`) VALUES
+(5, 3, 'admin', 'Cảm ơn quý khách hàng đã quan tâm sản phẩm', '2023-09-08 07:33:43', '2023-09-08 07:33:43');
 
 -- --------------------------------------------------------
 
@@ -512,7 +537,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `remember_token`, `created_at`, `updated_at`, `status`, `avatar`, `provider`, `provider_id`, `access_token`) VALUES
 (1, 'Test', 'test@gmail.com', NULL, '$2y$10$OCnQ7PvpxDSD942T1OmjIOdB8CLV3V4a9GPqDrQpxdqqhoWDzdNNe', '0123456789', 'tG84sWvYx5AQjn1T1rArjKPXuXhqtTdZoQO43arJgXqXeeVZgiWxeEyUFw1D', '2023-08-29 17:47:37', '2023-08-29 17:47:37', 1, NULL, NULL, NULL, NULL),
 (2, 'Hiển Phạm Minh', 'hienpmdc2@gmail.com', NULL, '', '0123456789', 'Zzp0ZuTAgeFzy13ru49Vnoga0submV6kr74SFgL5y06rN2T0eWsmBxxlzoWW', '2023-08-29 17:09:05', '2023-08-29 17:34:02', 1, 'https://lh3.googleusercontent.com/a/AAcHTtf2R41BQ0JQ3OYq7rA67r4umIXVpOLSRGEMmu7P2WLpgsAl=s96-c', 'google', '101374039680393252648', 'ya29.a0AfB_byDIJHD99y2qjaLpBzAJF-TK1y-12ekplT3tadWx8V39YlJzL1i23keN9JGGJrnxkReT1NdFi51HRhruPXBKJy0d1W0mcGGJiSUz2lZdvif6TMRTNIJOeEpGMfNin92QpAZ5bDqBRIZfZMB-4qIZEhXueFMfJ34eWAaCgYKAecSARMSFQHsvYlsNFdWkk-X84kVUdM6wE1cMg0173'),
-(3, 'Phạm Minh Hoa', 'hoa@gmail.com', NULL, '$2y$10$O8BcjbOo/kFcm0/5SRfeu.ak2sLe3SxP5VumIwZO42xpbypoDHy0W', '0123456789', '3ZpdQnCwFkfCHUimVujFmiL9ITQAQiJKcI9oFKTWDfpPWEtmvl3Ay8kiC5HI', '2023-08-30 08:08:42', '2023-08-30 08:08:42', 1, NULL, NULL, NULL, NULL);
+(3, 'Phạm Minh Hoa', 'hoa@gmail.com', NULL, '$2y$10$O8BcjbOo/kFcm0/5SRfeu.ak2sLe3SxP5VumIwZO42xpbypoDHy0W', '0123456789', 'WJI9SD51pCHyKL1hqve4HlPqjkIm4yx9MrvGUoimKaxoaFHX8qWnHQbka2v1', '2023-08-30 08:08:42', '2023-08-30 08:08:42', 1, NULL, NULL, NULL, NULL),
+(4, 'Phạm Minh Hùng', 'hung@gmail.com', NULL, '$2y$10$5JwTP485wHL7CHJZ9yPLpO6YGomD9/lFg0vyiNjt45GDDTDPEhqva', '0123456789', 'PyXmArPUaVsPpGSqQu3NytTVoLJsv3crGUq1QpIt9run51yNgIXv3wSb3CCa', '2023-09-07 04:52:15', '2023-09-07 04:52:15', 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -549,6 +575,14 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 12, 4, '2023-09-08 07:46:25', '2023-09-08 07:46:25'),
+(5, 11, 4, '2023-09-08 07:46:29', '2023-09-08 07:46:29');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -733,7 +767,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -757,7 +791,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT cho bảng `parent_categories`
@@ -787,7 +821,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT cho bảng `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `setting`
@@ -805,13 +839,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
