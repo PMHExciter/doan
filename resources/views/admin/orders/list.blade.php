@@ -30,7 +30,8 @@
                         <th>Ngày đặt hàng</th>
                         <th>Địa chỉ nhận hàng</th>
                         <th>Trạng thái</th>
-                        <th>Chức năng</th>
+                        <th>Phương thức thanh toán</th>
+                        <th width="50">Chức năng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,9 @@
                                 @elseif ($row->status === 3)
                                     {{ 'Hủy' }}
                                 @endif
+                            </td>
+                            <td>
+                                {{ $row->payment_method == 0 ? 'Thanh toán online' : 'Thanh toán cod' }}
                             </td>
                             <td>
                                 <a href="{{ route('order.show',['id' => $row->id]) }}" class="btn btn-primary btn-circle btn-sm">

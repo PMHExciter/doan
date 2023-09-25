@@ -97,6 +97,7 @@
                                     Chờ xác nhận
                                 @endif
                             </span></div>
+                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Phương thức thanh toán:</span> {{ $order->payment_method == 0 ? 'Thanh toán online' : 'Thanh toán cod' }}</div>
                         </div>
                     </div>
                     <!-- /.col -->

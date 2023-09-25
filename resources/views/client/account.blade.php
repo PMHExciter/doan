@@ -97,6 +97,7 @@
                                         <th>Ngày đặt hàng</th>
                                         <th>Địa chỉ nhận hàng</th>
                                         <th>Trạng thái</th>
+                                        <th>Phương thức thanh toán</th>
                                         <th>Chức năng</th>
                                     </tr>
                                     @foreach ($orders as $order)
@@ -116,6 +117,9 @@
                                                 @elseif ($order->status === 3)
                                                     {{ 'Hủy' }}
                                                 @endif
+                                            </td>
+                                            <td>
+                                                {{ $order->payment_method == 0 ? 'Thanh toán online' : 'Thanh toán cod' }}
                                             </td>
                                             <td>
                                                 <a href="{{ route('my.order.show',['id' => $order->id]) }}" class="btn btn-primary btn-circle btn-sm">

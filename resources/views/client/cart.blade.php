@@ -131,8 +131,9 @@
                                                 VND</span></li>
                                     </ul>
                                     @if (Auth::check())
-                                        <a href="{{ route('client.checkout') }}" class="primary-btn 
-                                        text-uppercase offset-md-4 btn btn-warning mb-4 text-white">THANH TOÁN</a>
+                                        <a href="{{ route('client.checkout') }}" class="primary-btn">THANH TOÁN ONLINE</a>
+                                        <br>
+                                        <a href="{{ route('client.checkout.cod') }}" class="primary-btn">THANH TOÁN COD</a>
                                     @else
                                         <a class="primary-btn text-center" href="#" data-toggle="modal"
                                             data-target="#formdangnhap">Đăng nhập</a>

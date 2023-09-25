@@ -178,15 +178,15 @@
                         @csrf
 
                         <div class="form-label-group">
-                            <input type="text" class="form-control" placeholder="Nhập họ và tên" name="name" required
+                            <input type="text" class="form-control" placeholder="Nhập họ và tên" name="name" value="{{ old('name') }}" required
                                 autofocus>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phone"
+                            <input type="text" class="form-control" placeholder="Nhập số điện thoại" name="phone" value="{{ old('phone') }}"
                                 required>
                         </div>
                         <div class="form-label-group">
-                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email" name="email"
+                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email" name="email" value="{{ old('email') }}"
                                 required>
                         </div>
                         <div class="form-label-group">
@@ -232,7 +232,7 @@
                         @csrf
                         
                         <div class="form-label-group">
-                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email" name="email"
+                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email" name="email" value="{{ old('email') }}"
                                 required autofocus>
                         </div>
 

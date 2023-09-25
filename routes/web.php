@@ -35,8 +35,10 @@ Route::namespace('Client')->prefix('/')->group(function () {
     Route::get('/filter', 'ProductController@filter');
     Route::get('/add-to-cart', 'ProductController@addToCart');
     Route::get('/checkout', 'OrderController@checkout')->name('client.checkout');
+    Route::get('/checkout-cod', 'OrderController@checkoutCod')->name('client.checkout.cod');
     Route::get('/check-voucher', 'OrderController@checkVoucher');
     Route::post('/pay','OrderController@pay')->name('pay');
+    Route::post('/pay-cod','OrderController@payCod')->name('pay.cod');
     Route::get('/cancel-payment-paypal', 'OrderController@cancelPaymentPaypal')->name('cancel.payment.paypal');
     Route::get('/done-payment-paypal', 'OrderController@donePaymentPaypal')->name('done.payment.paypal');
     Route::get('/my-order/{id}','OrderController@showMyOrder')->name('my.order.show');

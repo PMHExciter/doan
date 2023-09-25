@@ -18,6 +18,6 @@ class Order extends Model
      *
      * @var array
      */
-    protected $fillable = ['id','user_id','total','address','status','voucher_code'];
+    protected $fillable = ['id','user_id','total','address','status','voucher_code','payment_method'];
     protected $table = "orders";
 }

@@ -27,6 +27,11 @@ class OrderController extends Controller
         return view('client.checkout');
     }
 
+    public function checkoutCod()
+    {
+        return view('client.checkout-cod');
+    }
+
     /**
      * Pay
      *
@@ -125,6 +130,69 @@ class OrderController extends Controller
         $res = $paypalModule->setExpressCheckout($products, true);
 
         return redirect($res['paypal_link']);
+    }
+
+    /**
+     * Pay
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function payCod(Request $request)
+    {
+        $products = [];
+        $total = 0;
+        if (!Session::has('cart')) {
+            return view('cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        foreach ($cart->items as $row) {
+            $total += $row['price'] * $row['qty'];
+        }
+
+        try {
+            if (isset($request->voucher)) {
+                $voucher = Voucher::where('code', $request->voucher)->first();
+                Voucher::where('code', $request->voucher)->update(['qty' => $voucher->qty - 1]);
+                $order = Order::create([
+                    'id'      => 'order_' . $this->generateRandomString(),
+                    'user_id' => Auth::user()->id,
+                    'total'   => $total - $voucher->price,
+                    'address' => $request->address,
+                    'voucher_code' => $request->voucher,
+                    'payment_method' => 1
+                ]);
+            } else {
+                $order = Order::create([
+                    'id'      => 'order_' . $this->generateRandomString(),
+                    'user_id' => Auth::user()->id,
+                    'total'   => $total,
+                    'address' => $request->address,
+                    'voucher_code' => $request->voucher,
+                    'payment_method' => 1
+                ]);
+            }
+            foreach ($cart->items as $row) {
+                OrderDetail::create([
+                    'product_id' => $row['item']['id'],
+                    'price' => $row['price'],
+                    'qty' => $row['qty'],
+                    'order_id' => $order->id
+                ]);
+                $product = Product::find($row['item']['id']);
+                Product::where('id', $row['item']['id'])->update(['qty' => $product['qty'] - $row['qty']]);
+                Product::where('id', $row['item']['id'])->update(['qty_buy' => $product['qty_buy'] + $row['qty']]);
+            }
+        } catch (\Exception $e) {
+            Alert::error('Error', $e->getMessage());
+            return redirect()->route('client.checkout')->with('invalid', $e->getMessage());
+        }
+
+        Session::forget('cart');
+        Alert::success('Success', 'Thanh toán thành công');
+
+        return redirect()->route('auth.change.account');
     }
 
     private function generateRandomString($length = 24) {

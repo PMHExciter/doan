@@ -8,7 +8,6 @@
         font-weight: 700;
         margin-bottom: 10px;
     }
-
     .checkout__order .checkout__order__products span {
         float: right;
     }
@@ -19,17 +18,14 @@
         border-top: 1px solid #e1e1e1;
         padding-top:10px;
     }
-
     .checkout__order .checkout__order__total span {
         float: right;
     }
-
     .checkout__order__products-item {
         font-size: 15px;
         color: #1c1c1c;
         margin-bottom: 10px;
     }
-
     .checkout__order__products-item span {
         float: right;
     }
@@ -53,14 +49,14 @@
                         <div class="tab-pane fade show active pl-4 " id="nav-thanhtoan" role="tabpanel"
                             aria-labelledby="nav-thanhtoan-tab">
                             <div class="row">
-                                <div class="col-lg-9 col-md-6">
+                                <div class="col-lg-8 col-md-6">
                                     <div class="offset-md-4 mt-3">
-                                        <h3 class="account-header text-center">Thanh toán online</h3>
+                                        <h3 class="account-header text-center">Thanh toán cod</h3>
                                     </div>
-                                    <form action="{{ route('pay') }}" method="POST" id="checkout-form">
+                                    <form action="{{ route('pay.cod') }}" method="POST">
 
                                         @csrf
-        
+
                                         <div class="hoten my-3">
                                             <div class="row">
                                                 <label class="col-md-3 offset-md-2" for="name">Họ tên</label>
@@ -99,7 +95,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-3 col-md-6">
+                                <div class="col-lg-4 col-md-6">
                                     <div class="checkout__order">
                                         <div class="mt-3">
                                             <h3 class="account-header">Chi tiết đơn hàng</h3>
@@ -115,7 +111,7 @@
                                         @php
                                             $total += $row['price'];
                                         @endphp
-                                             <div class="checkout__order__products-item" title="{{ $row['item']['name'] }}">{{ strlen($row['item']['name']) > 22 ? substr($row['item']['name'], 0, 22) . '...' : $row['item']['name'] }}<span>{{ number_format($row['price'],-3,',',',') }} VND</span></div>
+                                            <div class="checkout__order__products-item" title="{{ $row['item']['name'] }}">{{ strlen($row['item']['name']) > 22 ? substr($row['item']['name'], 0, 22) . '...' : $row['item']['name'] }}<span>{{ number_format($row['price'],-3,',',',') }} VND</span></div>
                                         @endforeach
                                         <div class="checkout__order__total text-danger">Thành tiền <span class="total-cart">{{ number_format($total,-3,',',',') }} VND</span></div>
                                         <input type="hidden" id="total" name="total" value="{{ $total }}" />

@@ -26,6 +26,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if($request->password === $request->repassword) {
+            if (User::where('email', $request->email)->exists()) {
+                Alert::error('Error', 'Email đã tồn tại');
+                return redirect()->back()->withInput();
+            }
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -36,7 +40,7 @@ class AuthController extends Controller
             return redirect()->back();
         }else {
             Alert::error('Error', 'Mật khẩu không trùng khớp');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
 
@@ -54,14 +58,14 @@ class AuthController extends Controller
                 if (Auth::user()->status == 0) {
                     Auth::logout();
                     Alert::error('Error', 'Hiện tài khoản của bạn đã bị khoá, vui lòng liên hệ quản trị viên để được hỗ trợ');
-                    return redirect()->back();
+                    return redirect()->back()->withInput();
                 } else {
                     Alert::success('Success', 'Đăng nhập thành công');
                     return redirect()->back();
                 }
             } else {
                 Alert::error('Error', 'Mật khẩu / Email không đúng');
-                return redirect()->back();
+                return redirect()->back()->withInput();
             }
         } catch (\Throwable $e) {
             \Log::info($e->getMessage());
