@@ -181,6 +181,7 @@ class ProductController extends Controller
             $product->sale_price = $request->input('price_sale');
             $product->start_date = $request->input('start_date');
             $product->end_date = $request->input('end_date');
+            $product->price = $request->price;
         }
         $product->save();
         return redirect()->route('product.list')->with("success","Sửa thành công");
