@@ -156,7 +156,7 @@ class ProductController extends Controller
         if ($product->qty < $request->qty) {
             return response()->json([
                 'status' => 422,
-                'title' => 'Sản phẩm chỉ còn ' . $product->qty . ', không đủ số lượng để mua hàng'
+                'title' => 'Sản phẩm chỉ còn' . $product->qty . ', không đủ số lượng để mua hàng'
             ]); 
         }
         $oldCart = Session::has('cart') ? Session::get('cart') : null;

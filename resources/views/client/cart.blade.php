@@ -107,7 +107,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('delete.item', ['id' => $row['item']['id']]) }}">
+                                                <a class="button-capnhat text-uppercase offset-md-1 btn btn-warning mb-2 text-white" href="{{ route('delete.item', ['id' => $row['item']['id']]) }}">
                                                     Xóa
                                                 </a>
                                             </td>
